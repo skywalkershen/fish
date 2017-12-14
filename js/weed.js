@@ -3,7 +3,7 @@ var weedObj = function(){
     this.len = [];
 
 }
-weedObj.prototype.num = 50;
+weedObj.prototype.num = 58;
 weedObj.prototype.init = function(){
     for(var i = 0; i < this.num; i++){
         this.x[i] = i * 16 + 20 * Math.random();

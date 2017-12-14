@@ -7,6 +7,7 @@ var fruitObj = function(){
     this.y = [];
     this.size = [];
     this.spd = [];
+    this.type = [];
 }
 fruitObj.prototype.num = 15;
 fruitObj.prototype.init = function(){
@@ -14,11 +15,12 @@ fruitObj.prototype.init = function(){
         this.alive[i] = false;
         this.x[i] = 0;
         this.y[i] = 0;
+        this.type[i] = "";
         this.spd[i] = Math.random() * 0.01 + 0.005;//need offset to avoid spd 0
         this.born(i);
     }
     this.orange.src = "./src/fruit.png";
-    this.blue.sorc = "./src/blue.png";
+    this.blue.src = "./src/blue.png";
     
 }
 //generate
@@ -26,13 +28,15 @@ fruitObj.prototype.init = function(){
 fruitObj.prototype.draw = function(){
     for(var i = 0; i < this.num; i++){
         if(this.alive[i]){
+            var pic = this.type[i] == "blue"? this.blue : this.orange;
+
             if(this.size[i] <= 15){
                 //grow
                 this.size[i] += this.spd[i] * interval;
             }else{
                 this.y[i] -= this.spd[i] * 7 * interval;
             }
-            ctx2.drawImage(this.orange, this.x[i] - this.size[i] * 0.5, this.y[i] - this.size[i] * 0.5, this.size[i], this.size[i]);
+            ctx2.drawImage(pic, this.x[i] - this.size[i] * 0.5, this.y[i] - this.size[i] * 0.5, this.size[i], this.size[i]);
 
             if(this.y[i] < -10){
                 this.alive[i] = false;
@@ -45,10 +49,12 @@ fruitObj.prototype.draw = function(){
 }
 fruitObj.prototype.born = function(i){
     var weedId = Math.floor(Math.random() * weed.num);
-    this.x[i] = weed.x[weedId] ;//this.orange.width * 0.5;
-    this.y[i] = canHeight - weed.len[weedId] ;//this.orange.height * 0.5;
+    this.x[i] = weed.x[weedId] ;
+    this.y[i] = canHeight - weed.len[weedId];
     this.size[i] = 0;
     this.alive[i] = true;
+    var ran = Math.random();
+    this.type[i] = ran < 0.3 ? "blue" : "orange";
 }
 
 //status check, if less than 15 fruits active, generate new one
