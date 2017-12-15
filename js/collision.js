@@ -7,6 +7,7 @@ function collision(){
             if(dist < 900){
                 //eaten
                 fruit.dead(i);
+                fruit.born(i);
             }
         }
     }
