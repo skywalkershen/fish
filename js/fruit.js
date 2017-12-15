@@ -54,9 +54,13 @@ fruitObj.prototype.born = function(i){
     this.size[i] = 0;
     this.alive[i] = true;
     var ran = Math.random();
-    this.type[i] = ran < 0.3 ? "blue" : "orange";
+    this.type[i] = ran < 0.2 ? "blue" : "orange";
 }
 
+fruitObj.prototype.dead = function(i){
+    this.alive[i] = false;
+}
+/*
 //status check, if less than 15 fruits active, generate new one
 fruitObj.prototype.update = function(){
     var num = 0;
@@ -64,6 +68,7 @@ fruitObj.prototype.update = function(){
         if(this.alive[i]) num++;
     }
 }
+*/
 /* born after the fruit get out of the screen
 function fruitMonitor(){
     var aliveNum = 0;

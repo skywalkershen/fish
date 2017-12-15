@@ -16,7 +16,10 @@ var bgPic = new Image();
 
 var weed;
 var fruit;
+var mom;
 
+var mousex;
+var mousey;
 
 document.body.onload = game;
 function game(){
@@ -45,7 +48,17 @@ function init(){
     can2.width = canWidth;
     can2.height = canHeight;
     
+    $("#canvas1").mousemove( function(e){
+        if(e.offsetX || e.layerX){
+            mousex = e.offsetX == undefined ? e.layerX : e.offsetX;
+            mousey = e.offsetY == undefined ? e.layerY : e.offsetY;
+            console.log(mousex + ", " + mousey);
+        }
+    });
     bgPic.src="src/background.jpg";
+    bgPic.onload= function(){
+        console.log("bgPic loaded");        
+    }
 
     weed = new weedObj();
     weed.init();
@@ -53,9 +66,12 @@ function init(){
     fruit = new fruitObj();
     fruit.init();
 
-    bgPic.onload= function(){
-        console.log("bgPic loaded");        
-    }
+    mom = new momObj;
+    mom.init();
+
+    mousex = mom.x;
+    mousey = mom.y;
+
     
     
      
@@ -73,4 +89,8 @@ function gameloop(){
     weed.draw();
     //fruitMonitor()
     fruit.draw();
+    
+    ctx1.clearRect(0, 0, canWidth, canHeight);
+    mom.draw();
+    collision();
 }
