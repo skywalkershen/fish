@@ -17,6 +17,7 @@ var bgPic = new Image();
 var weed;
 var fruit;
 var mom;
+var child;
 
 var mousex;
 var mousey;
@@ -52,7 +53,7 @@ function init(){
         if(e.offsetX || e.layerX){
             mousex = e.offsetX == undefined ? e.layerX : e.offsetX;
             mousey = e.offsetY == undefined ? e.layerY : e.offsetY;
-            console.log(mousex + ", " + mousey);
+            //console.log(mousex + ", " + mousey);
         }
     });
     bgPic.src="src/background.jpg";
@@ -68,6 +69,8 @@ function init(){
 
     mom = new momObj;
     mom.init();
+    child = new childObj;
+    child.init();
 
     mousex = mom.x;
     mousey = mom.y;
@@ -93,4 +96,5 @@ function gameloop(){
     ctx1.clearRect(0, 0, canWidth, canHeight);
     mom.draw();
     collision();
+    child.draw();
 }
