@@ -10,18 +10,11 @@ function collision(){
                     fruit.dead(i);
                     //console.log("fruit[" + i + "] eaten is: " +fruit.type[i]);
 //note the sequence of dead, type check and born can lead to bug!!!!!!!!!!!!
-                    if(fruit.type[i] == "blue"){
-                        score.double = 2;
-                    }else{
-                        score.double = 1;
-                    }
-                    fruit.born(i);
-                    //score.fruitNum = score.double == 2? 2 * score.fruitNum : score.fruitNum + 1;
+                    score.double = fruit.type[i] == "blue"? 2 : 1;
                     score.fruitNum++;
                     mom.bigBodyCnt = mom.bigBodyCnt >= 7 ? 7 : mom.bigBodyCnt + 1;
-                    //score.double = fruit.type[i] == "blue"? 2 : 1;
-    //?????????note: sometimes the double doesn't work
-                    
+                    wave.born(fruit.x[i], fruit.y[i]);
+                    fruit.born(i);
                     
                     
                 }

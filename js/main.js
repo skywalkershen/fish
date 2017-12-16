@@ -112,4 +112,5 @@ function gameloop(){
     fishCollision();
     child.draw();
     score.draw();
+    wave.draw();
 }
