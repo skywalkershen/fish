@@ -12,3 +12,11 @@ function collision(){
         }
     }
 }
+
+function fishCollision(){
+    var dist = calLength2(mom.x, mom.y, child.x, child.y);
+    if(dist < 900){
+        //child recover
+        child.childBodyCnt = 0;
+    }
+}
