@@ -40,6 +40,7 @@ fruitObj.prototype.draw = function(){
 
             if(this.y[i] < -10){
                 this.dead(i);
+                //console.log("dead, out of screen");
                 this.born(i);
             }
         }        
@@ -55,6 +56,7 @@ fruitObj.prototype.born = function(i){
     var ran = Math.random();
     this.type[i] = ran < 0.2 ? "blue" : "orange";
     this.alive[i] = true;
+    //console.log("fruit[" + i + "] generated as " + this.type[i]);
 }
 
 fruitObj.prototype.dead = function(i){
