@@ -59,7 +59,7 @@ fruitObj.prototype.born = function(i){
 
 fruitObj.prototype.dead = function(i){
     this.alive[i] = false;
-    this.type[i] = ""
+    
    
 }
 /*

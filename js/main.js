@@ -22,6 +22,7 @@ var child;
 var mousex;
 var mousey;
 var score;
+var wave;
 
 
 
@@ -85,6 +86,8 @@ function init(){
     mousex = mom.x;
     mousey = mom.y;
     score = new scoreObj();
+    wave = new waveObj();
+    wave.init();
     
     
      

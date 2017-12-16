@@ -5,7 +5,7 @@ function collision(){
             if(fruit.alive[i]){
                 //calculate dist
                 var dist = calLength2(mom.x, mom.y, fruit.x[i], fruit.y[i]);
-                if(dist < 200){
+                if(dist < 500){
                     //eaten
                     fruit.dead(i);
                     fruit.born(i);
