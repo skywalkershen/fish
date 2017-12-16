@@ -23,6 +23,7 @@ var mousex;
 var mousey;
 var score;
 var wave;
+var fed;
 
 
 
@@ -88,9 +89,8 @@ function init(){
     score = new scoreObj();
     wave = new waveObj();
     wave.init();
-    
-    
-     
+    fed = new fedObj();
+    fed.init();
 }
 
 function gameloop(){
@@ -113,4 +113,5 @@ function gameloop(){
     child.draw();
     score.draw();
     wave.draw();
+    fed.draw();
 }

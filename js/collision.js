@@ -34,6 +34,7 @@ function fishCollision(){
             //score reset       
             mom.bigBodyCnt = 0;
             score.addScore();
+            fed.born(child.x, child.y);
             //score.reset();
         }
     }
