@@ -2,20 +2,30 @@ var childObj = function(){
     this.x;
     this.y;
     this.angle;
-    this.childEye = new Image();
-    this.childBody = new Image();
-    this.childTail = new Image();
+    this.childEye = [];
+    this.childEyeTimer = 0;
+    this.childEyeCnt = 0;
+    this.childEyeInterval = 1000;
+    this.childBody = [];
+    this.childBodyTimer = 0;
+    this.childBodyCnt = 0;
     this.childTailTimer = 0;
     this.childTailCnt = 0;
     this.childTail = [];
+    
 }
 childObj.prototype.init = function(){
     this.x = canWidth * 0.5 - 50;
     this.y = canHeight * 0.5  + 50;
     this.angle = 0;
-    this.childEye.src = "./src/babyEye0.png";
-    this.childBody.src = "./src/babyFade0.png";
-    this.childTail.src = "./src/babyTail0.png";
+    for(var i = 0; i < 2; i++){
+        this.childEye[i] = new Image();
+        this.childEye[i].src = "./src/babyEye" + i + ".png";
+    }
+    for(var i = 0; i < 20; i++){
+        this.childBody[i] = new Image();
+        this.childBody[i].src = "./src/babyFade" + i + ".png";
+    }
     for(var i = 0; i < 8; i++){
         this.childTail[i] = new Image();
         this.childTail[i].src = "./src/babyTail" + i + ".png";
@@ -40,13 +50,38 @@ childObj.prototype.draw = function(){
         this.childTailTimer % 50;
     }
 
+    this.childEyeTimer += interval;
+    if(this.childEyeTimer > this.childEyeInterval){
+        this.childEyeCnt = (this.childEyeCnt + 1) % 2;
+        this.childEyeTimer %= this.childEyeInterval;
+
+        if(this.childEyeCnt == 1){
+            this.childEyeInterval = Math.random() * 200 + 200;
+        }else{
+            this.childEyeInterval = 2000;
+        }
+    }
+
+    
+    this.childBodyTimer += interval;
+    if(this.childBodyTimer > 300){
+        this.childBodyTimer = 0;
+        this.childBodyCnt += 1;
+        if(this.childBodyCnt > 19){
+            this.childBodyCnt = 19;
+            //game over
+        }
+    }
     ctx1.save();
     ctx1.translate(this.x, this.y);
     ctx1.rotate(this.angle); 
     //the sequence matters since overlapping
     var childTailIdx = this.childTailCnt;
     ctx1.drawImage(this.childTail[childTailIdx], -this.childTail[childTailIdx].width * 0.5 + 24, -this.childTail[childTailIdx].height * 0.5);
-    ctx1.drawImage(this.childBody, -this.childBody.width * 0.5, -this.childBody.height * 0.5);
-    ctx1.drawImage(this.childEye, -this.childEye.width * 0.5, -this.childEye.height * 0.5);
+    var childBodyCnt = this.childBodyCnt;
+    ctx1.drawImage(this.childBody[childBodyCnt], -this.childBody[childBodyCnt].width * 0.5, -this.childBody[childBodyCnt].height * 0.5);
+
+    var childEyeIdx = this.childEyeCnt;
+    ctx1.drawImage(this.childEye[childEyeIdx], -this.childEye[childEyeIdx].width * 0.5, -this.childEye[childEyeIdx].height * 0.5);
     ctx1.restore();
 }
