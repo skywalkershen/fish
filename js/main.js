@@ -22,6 +22,9 @@ var child;
 var mousex;
 var mousey;
 
+
+
+
 document.body.onload = game;
 function game(){
     
