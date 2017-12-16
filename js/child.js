@@ -67,12 +67,13 @@ childObj.prototype.draw = function(){
 
     
     this.childBodyTimer += interval;
-    if(this.childBodyTimer > 300){
+    if(this.childBodyTimer > 500){
         this.childBodyTimer = 0;
         this.childBodyCnt += 1;
         if(this.childBodyCnt > 19){
             this.childBodyCnt = 19;
             //game over
+            score.gameOver = true;
         }
     }
     ctx1.save();

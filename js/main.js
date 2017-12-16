@@ -51,14 +51,21 @@ function init(){
     ctx2 = can2.getContext('2d');
     can2.width = canWidth;
     can2.height = canHeight;
-    
+    //for printing score
+    ctx1.fillStyle = "white";
+    ctx1.font = "20px Verdana";
+    ctx1.textAlign = "center";
+
     $("#canvas1").mousemove( function(e){
-        if(e.offsetX || e.layerX){
-            mousex = e.offsetX == undefined ? e.layerX : e.offsetX;
-            mousey = e.offsetY == undefined ? e.layerY : e.offsetY;
-            //console.log(mousex + ", " + mousey);
+        if(!score.gameOver){
+            if(e.offsetX || e.layerX){
+                mousex = e.offsetX == undefined ? e.layerX : e.offsetX;
+                mousey = e.offsetY == undefined ? e.layerY : e.offsetY;
+                //console.log(mousex + ", " + mousey);
+            }
         }
-    });
+    }
+        );
     bgPic.src="src/background.jpg";
     bgPic.onload= function(){
         console.log("bgPic loaded");        

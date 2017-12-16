@@ -8,8 +8,12 @@ var momObj = function(){
     this.bigEyeTimer = 0;
     this.bigEyeCnt = 0;
 
-    this.bigBody = new Image();
     
+    this.bigBodyOr = [];
+    this.bigBodyBl = [];
+    this.bigBodyCnt = 0;
+
+
     this.bigTail = [];
     this.bigTailTimer = 0;
     this.bigTailCnt = 0;
@@ -19,8 +23,6 @@ momObj.prototype.init = function(){
     this.x = canWidth * 0.5;
     this.y = canHeight * 0.5;
     this.angle = 0;
-    this.bigEye.src = "./src/bigEye0.png";
-    this.bigBody.src = "./src/bigSwim0.png";
     for(var i = 0; i < 8; i++){
         this.bigTail[i] = new Image();
         this.bigTail[i].src = "./src/bigTail" + i + ".png";
@@ -29,6 +31,14 @@ momObj.prototype.init = function(){
         this.bigEye[i] = new Image();
         this.bigEye[i].src = "./src/bigEye" + i + ".png";
     }
+
+    for(var i = 0; i < 8; i++){
+        this.bigBodyBl[i] = new Image();
+        this.bigBodyBl[i].src = "./src/bigSwimBlue" + i + ".png";
+        this.bigBodyOr[i] = new Image();
+        this.bigBodyOr[i].src = "./src/bigSwim" + i + ".png";
+    }
+
 }
 
 momObj.prototype.draw = function(){
@@ -63,13 +73,19 @@ momObj.prototype.draw = function(){
         }
     }
 
+
     ctx1.save();
     ctx1.translate(this.x, this.y);
     ctx1.rotate(this.angle);
     //the sequence matters since overlapping
     var bigTailIdx = this.bigTailCnt;
     ctx1.drawImage(this.bigTail[bigTailIdx], -this.bigTail[bigTailIdx].width * 0.5 + 30, -this.bigTail[bigTailIdx].height * 0.5);
-    ctx1.drawImage(this.bigBody, -this.bigBody.width * 0.5, -this.bigBody.height * 0.5);
+    var bigBodyIdx = this.bigBodyCnt;
+    if(score.double == 1){
+        ctx1.drawImage(this.bigBodyOr[bigBodyIdx], -this.bigBodyOr[bigBodyIdx].width * 0.5, -this.bigBodyOr[bigBodyIdx].height * 0.5);
+    }else{
+        ctx1.drawImage(this.bigBodyBl[bigBodyIdx], -this.bigBodyBl[bigBodyIdx].width * 0.5, -this.bigBodyBl[bigBodyIdx].height * 0.5);
+    }
     var bigEyeIdx = this.bigEyeCnt;
     ctx1.drawImage(this.bigEye[bigEyeIdx], -this.bigEye[bigEyeIdx].width * 0.5, -this.bigEye[bigEyeIdx].height * 0.5);
     ctx1.restore();

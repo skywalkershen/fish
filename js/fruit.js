@@ -39,7 +39,7 @@ fruitObj.prototype.draw = function(){
             ctx2.drawImage(pic, this.x[i] - this.size[i] * 0.5, this.y[i] - this.size[i] * 0.5, this.size[i], this.size[i]);
 
             if(this.y[i] < -10){
-                this.alive[i] = false;
+                this.dead(i);
                 this.born(i);
             }
         }        
@@ -52,13 +52,15 @@ fruitObj.prototype.born = function(i){
     this.x[i] = weed.x[weedId] ;
     this.y[i] = canHeight - weed.len[weedId];
     this.size[i] = 0;
-    this.alive[i] = true;
     var ran = Math.random();
     this.type[i] = ran < 0.2 ? "blue" : "orange";
+    this.alive[i] = true;
 }
 
 fruitObj.prototype.dead = function(i){
     this.alive[i] = false;
+    this.type[i] = ""
+   
 }
 /*
 //status check, if less than 15 fruits active, generate new one
