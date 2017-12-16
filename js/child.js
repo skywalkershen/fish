@@ -2,13 +2,16 @@ var childObj = function(){
     this.x;
     this.y;
     this.angle;
+
     this.childEye = [];
     this.childEyeTimer = 0;
     this.childEyeCnt = 0;
     this.childEyeInterval = 1000;
+
     this.childBody = [];
     this.childBodyTimer = 0;
     this.childBodyCnt = 0;
+
     this.childTailTimer = 0;
     this.childTailCnt = 0;
     this.childTail = [];
@@ -33,8 +36,8 @@ childObj.prototype.init = function(){
 }
 childObj.prototype.draw = function(){
     //lerp x, y in common funcs
-    this.x = lerpDistance(mom.x, this.x, 0.97);
-    this.y = lerpDistance(mom.y, this.y, 0.97);
+    this.x = lerpDistance(mom.x, this.x, 0.98);
+    this.y = lerpDistance(mom.y, this.y, 0.98);
     //delta angle
     //math.atan2(y, x)
     var deltaY = -(mom.y - this.y);

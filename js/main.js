@@ -21,7 +21,7 @@ var child;
 
 var mousex;
 var mousey;
-
+var score;
 
 
 
@@ -77,7 +77,7 @@ function init(){
 
     mousex = mom.x;
     mousey = mom.y;
-
+    score = new scoreObj();
     
     
      
@@ -101,4 +101,5 @@ function gameloop(){
     collision();
     fishCollision();
     child.draw();
+    score.draw();
 }

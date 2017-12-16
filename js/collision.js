@@ -8,6 +8,14 @@ function collision(){
                 //eaten
                 fruit.dead(i);
                 fruit.born(i);
+                //score.fruitNum = score.double == 2? 2 * score.fruitNum : score.fruitNum + 1;
+                score.fruitNum++;
+                //score.double = fruit.type[i] == "blue"? 2 : 1;
+//?????????note: sometimes the double doesn't work
+                if(fruit.type[i] == "blue"){
+                    score.double = 2;
+                }
+                
             }
         }
     }
@@ -18,5 +26,7 @@ function fishCollision(){
     if(dist < 900){
         //child recover
         child.childBodyCnt = 0;
+        //score reset
+        score.reset();
     }
 }

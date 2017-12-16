@@ -2,11 +2,14 @@ var momObj = function(){
     this.x;
     this.y;
     this.angle;
+
     this.bigEye = [];
     this.bigEyeInterval = 1000;
     this.bigEyeTimer = 0;
     this.bigEyeCnt = 0;
+
     this.bigBody = new Image();
+    
     this.bigTail = [];
     this.bigTailTimer = 0;
     this.bigTailCnt = 0;
