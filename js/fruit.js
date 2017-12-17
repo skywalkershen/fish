@@ -8,6 +8,7 @@ var fruitObj = function(){
     this.size = [];
     this.spd = [];
     this.type = [];
+    this.weedId = [];
 }
 fruitObj.prototype.num = 15;
 fruitObj.prototype.init = function(){
@@ -17,6 +18,7 @@ fruitObj.prototype.init = function(){
         this.y[i] = 0;
         this.type[i] = "";
         this.spd[i] = Math.random() * 0.01 + 0.005;//need offset to avoid spd 0
+        this.weedId[i] = 0;
         this.born(i);
     }
     this.orange.src = "./src/fruit.png";
@@ -33,6 +35,8 @@ fruitObj.prototype.draw = function(){
             if(this.size[i] <= 15){
                 //grow
                 this.size[i] += this.spd[i] * interval;
+                this.x[i] = weed.headx[this.weedId[i]];
+                this.y[i] = weed.heady[this.weedId[i]];
             }else{
                 this.y[i] -= this.spd[i] * 7 * interval;
             }
@@ -49,9 +53,9 @@ fruitObj.prototype.draw = function(){
     }
 }
 fruitObj.prototype.born = function(i){
-    var weedId = Math.floor(Math.random() * weed.num);
-    this.x[i] = weed.x[weedId] ;
-    this.y[i] = canHeight - weed.len[weedId];
+    this.weedId[i] = Math.floor(Math.random() * weed.num);
+    this.x[i] = weed.headx[this.weedId[i]] ;
+    this.y[i] = weed.heady[this.weedId[i]];
     this.size[i] = 0;
     var ran = Math.random();
     this.type[i] = ran < 0.2 ? "blue" : "orange";

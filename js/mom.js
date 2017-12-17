@@ -34,9 +34,9 @@ momObj.prototype.init = function(){
 
     for(var i = 0; i < 8; i++){
         this.bigBodyBl[i] = new Image();
-        this.bigBodyBl[i].src = "./src/bigSwimBlue" + i + ".png";
+        this.bigBodyBl[i].src = "./src/bigEatBlue" + i + ".png";
         this.bigBodyOr[i] = new Image();
-        this.bigBodyOr[i].src = "./src/bigSwim" + i + ".png";
+        this.bigBodyOr[i].src = "./src/bigEat" + i + ".png";
     }
 
 }
