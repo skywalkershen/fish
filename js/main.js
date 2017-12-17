@@ -24,6 +24,7 @@ var mousey;
 var score;
 var wave;
 var fed;
+var dust;
 
 
 
@@ -86,11 +87,18 @@ function init(){
 
     mousex = mom.x;
     mousey = mom.y;
+
     score = new scoreObj();
+
     wave = new waveObj();
     wave.init();
+
     fed = new fedObj();
     fed.init();
+    
+    
+    dust = new dustObj();
+    dust.init();
 }
 
 function gameloop(){
@@ -114,4 +122,5 @@ function gameloop(){
     score.draw();
     wave.draw();
     fed.draw();
+    dust.draw();
 }
