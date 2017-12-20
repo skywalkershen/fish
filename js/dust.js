@@ -33,6 +33,6 @@ dustObj.prototype.draw = function(){
     var siny = Math.sin(this.angle);   
     for(var i = 0; i < this.num; i++){
         var picIdx = this.Idx[i];
-        ctx1.drawImage(this.dustPic[picIdx], this.x[i] + this.amp[i] * siny, this.y[i]);
+        ctx1.drawImage(dustPic[picIdx], this.x[i] + this.amp[i] * siny, this.y[i]);
     }
 }
