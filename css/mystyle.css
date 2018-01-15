@@ -7,6 +7,7 @@ body{
     width: 800px;
     height:600px;
     margin: 0 auto;
+    position:relative;
 }
 
 #allcanvas{
@@ -34,29 +35,40 @@ canvas{
     bottom: 0;
     left:0;
     z-index:0;
-    
-    
-    
 }
 
-.play-button {
-    width: 100px;
-    height: 100px;
+.play {
     position: absolute;
-    align: center;
-    top: 48px;
-    right: 48px;
-    border: 4px solid #222;
-    border-radius: 54px;
+    width: 800px;
+    height: 600px;
+    top:0;
+    left:0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color:white;
+    background: rgba(129, 128, 128, 0.8);
+    z-index: 99999;
 }
-.play-button span {
-    position: absolute;
+.play h3{
+    position: relative;
+    width:100px;
+    margin: 0 auto;
+    top:20%;
+}
+.play p{
+    position:relative;
+    width:80%;
+    margin:0  auto;
+    top:25%;
+}
 
-    top: 14px;
-    left: 30px;
-    width: 0;
-    height: 0;
-    border-top: 36px solid transparent;
-    border-bottom: 36px solid transparent;
-    border-left: 60px solid #222;
+.button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
 }

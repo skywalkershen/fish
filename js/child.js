@@ -65,17 +65,19 @@ childObj.prototype.draw = function(){
         }
     }
 
-    
-    this.childBodyTimer += interval;
-    if(this.childBodyTimer > 500){
-        this.childBodyTimer = 0;
-        this.childBodyCnt += 1;
-        if(this.childBodyCnt > 19){
-            this.childBodyCnt = 19;
-            //game over
-            score.gameOver = true;
+    if(gameStart){
+        this.childBodyTimer += interval;
+        if(this.childBodyTimer > 500){
+            this.childBodyTimer = 0;
+            this.childBodyCnt += 1;
+            if(this.childBodyCnt > 19){
+                this.childBodyCnt = 19;
+                //game over
+                score.gameOver = true;
+            }
         }
     }
+    
     ctx1.save();
     ctx1.translate(this.x, this.y);
     ctx1.rotate(this.angle); 

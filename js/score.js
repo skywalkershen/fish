@@ -22,6 +22,9 @@ scoreObj.prototype.draw = function(){
         this.opacity = this.opacity > 1 ? 1 :interval * 0.0001 + this.opacity;
         ctx1.fillStyle = "rgba(255, 255, 255," + this.opacity + ")";    
         ctx1.fillText("Game Over", w * 0.5, h - 300);
+        gameStart=false;
+        this.restart();
+        
     }
     ctx1.restore();
 }
@@ -30,4 +33,12 @@ scoreObj.prototype.addScore = function(){
     this.score += this.fruitNum * 100 * this.double;
     this.fruitNum = 0;
     this.double = 1;
+}
+
+scoreObj.prototype.restart = function(){
+    if(this.opacity >= 0.7){
+        playDiv.fadeIn(1000);
+        this.gameOver = false;
+        child.childBodyCnt = 0;
+    }
 }

@@ -10,6 +10,9 @@ var ctx2;
 
 var lastTime;
 var interval;
+var gameStart = false;
+var playButton;
+var playDiv;
 
 var bgPic = new Image();
 
@@ -60,7 +63,7 @@ function init(){
     ctx1.textAlign = "center";
 
     $("#canvas1").mousemove( function(e){
-        if(!score.gameOver){
+        if(!score.gameOver && gameStart){
             if(e.offsetX || e.layerX){
                 mousex = e.offsetX == undefined ? e.layerX : e.offsetX;
                 mousey = e.offsetY == undefined ? e.layerY : e.offsetY;
@@ -105,6 +108,12 @@ function init(){
     }
     dust = new dustObj();
     dust.init();
+    playButton = $('.button');//document.querySelector(".button");//
+    playDiv = $('.play');//document.querySelector(".play");
+    playButton.click(function(){
+        playDiv.toggle();
+        gameStart = true;
+    });
 }
 
 function gameloop(){

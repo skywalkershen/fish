@@ -1,6 +1,6 @@
 //if dist between mom and fruit is smaller than certain value, eat
 function collision(){
-    if(!score.gameOver){
+    if(!score.gameOver && gameStart){
         for(var i = 0; i < fruit.num; i++){
             if(fruit.alive[i]){
                 //calculate dist
@@ -25,7 +25,7 @@ function collision(){
 }
 
 function fishCollision(){
-    if(score.fruitNum > 0 && !score.gameOver){
+    if(score.fruitNum > 0 && !score.gameOver && gameStart){
         var dist = calLength2(mom.x, mom.y, child.x, child.y);
         if(dist < 900){
             //child recover
